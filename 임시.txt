@@ -1,0 +1,39 @@
+이름	프로토콜	방법	결과	콘텐츠 형식	받은 날짜	시간	초기자
+http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?type=station&szPart=REVIEW&szBjId=royaljoin&nTitleNo=22356206&nBbsNo=35322501&isAfreeca=true&nStationNo=15228730&szCategory=00210000&autoPlay=true
+
+
+이름	프로토콜	방법	결과	콘텐츠 형식	받은 날짜	시간	초기자
+http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15228730&szBjId=royaljoin	HTTP	GET	200	text/html		57.91 ms	document
+
+
+
+http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15228730&szBbsType=REVIEW&szBjId=royaljoin
+
+
+
+
+
+
+client.fetch('http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15189885&szBbsType=REVIEW&szBjId=epsthddus',function (err, $, res, body){
+	console.log(res.headers);
+
+	$('a').each(function(idx){ 
+    		console.log($(this).attr('href'));
+	});
+
+
+
+
+http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?type=station&szPart=REVIEW&szBjId=royaljoin&nTitleNo=22020214
+
+
+
+
+client.fetch('http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?type=station&szPart=REVIEW&szBjId=epsthddus&nTitleNo=22350286',function (err, $, res, body){
+
+  console.log(res.headers);
+ 
+  console.log($('title').text());
+  console.log($('file').text());
+ 
+});

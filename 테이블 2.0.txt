@@ -1,0 +1,59 @@
+DROP TABLE Bjs;
+
+CREATE TABLE Bjs(
+	bno INTEGER(10) NOT NULL,
+	bname VARCHAR(20) NOT NULL,
+	blogo VARCHAR(20) NOT NULL,
+	PRIMARY KEY(bno));
+
+
+DROP TABLE Files;
+
+CREATE TABLE Files(
+	fino VARCHAR(20) NOT NULL,
+	ino INTEGER(10) NOT NULL,
+	fiday VARCHAR(200),
+	fititle VARCHAR(100) NOT NULL,
+	fititleimg VARCHAR(150) NOT NULL,
+	ffile VARCHAR(1500) NOT NULL,
+	PRIMARY KEY(fino,ino));
+
+
+DROP TABLE Files2;
+
+CREATE TABLE Files2(
+	fino VARCHAR(20) NOT NULL,
+	ino INTEGER(10) NOT NULL,
+	fiday VARCHAR(200),
+	fititle VARCHAR(100) NOT NULL,
+	fititleimg VARCHAR(150) NOT NULL,
+	ffile VARCHAR(1500) NOT NULL,
+	PRIMARY KEY(fino,ino));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------
+
+DROP TABLE Files;
+
+CREATE TABLE Files(
+	fno INTEGER(10) NOT NULL AUTO_INCREMENT,
+	fino VARCHAR(20) NOT NULL,
+	ffile VARCHAR(800) NOT NULL,
+	PRIMARY KEY(fno));

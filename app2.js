@@ -30,9 +30,9 @@ app.listen(52273,function(){
 //라우트를 수행합니다.
 app.get('/', function(request,response){
 	//파일을 읽습니다.
-	fs.readFile('list.html','utf8',function(error,data){
+	fs.readFile('list2.html','utf8',function(error,data){
 	//데이터베이스 쿼리를 수행합니다.
-	connection.query('SELECT * FROM Files order by fiday desc', function(error,results){
+	connection.query('SELECT * FROM Files2 order by fiday desc', function(error,results){
 	//응답합니다.
 		response.send(ejs.render(data, {
 			data: results
@@ -53,7 +53,7 @@ var str2 = "\t";
 var i = 0;
 
 console.log(str1);
-console.log("혜루찡 다시보기 크롤링!");
+console.log("부식 다시보기 크롤링!");
 
 var client = require('cheerio-httpcli');
 var mysql = require('mysql');
@@ -69,7 +69,7 @@ var rrvv17 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=788815';
 var file_link = 'http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?&nRowNum=30&nTitleNo=';
 
 
-client.fetch(epsthddus,function (err, $, res, body){
+client.fetch(royaljoin,function (err, $, res, body){
 	//console.log(res.headers);
 
 	var word = [];
@@ -180,7 +180,7 @@ for(i=0; array_addr[i] != null;){
 
 	for(i=0; i<max_i;){
 
-	var sqlQuery1 = "INSERT INTO files SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
+	var sqlQuery1 = "INSERT INTO files2 SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
 
 	var post1 = {fino : word1[0], ino : i+1, fiday : array_day[i], fititle : array_title[0], fititleimg : array_titleImage[0], ffile : array_file[i]};
 	

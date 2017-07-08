@@ -32,7 +32,7 @@ app.get('/', function(request,response){
 	//파일을 읽습니다.
 	fs.readFile('list2.html','utf8',function(error,data){
 	//데이터베이스 쿼리를 수행합니다.
-	connection.query('SELECT * FROM Files2 order by fiday desc', function(error,results){
+	connection.query('SELECT * FROM Files2 order by fino desc', function(error,results){
 	//응답합니다.
 		response.send(ejs.render(data, {
 			data: results

@@ -86,8 +86,8 @@ body {
     left: 50%;
     margin-top: -25px;
     margin-left: -100px;
-    width: 200px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     text-align: center;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -182,12 +182,14 @@ body {
 
 <table width="100%" border="1">
 	<tr>
+		<th>파일날짜</th>
 		<th>image</th>
 		<th>파일제목</th>
 		<th>파일목록</th>
 	</tr>
 	<% data.forEach(function (item, index){ %>
 		<tr>
+		<td><%= item.fiday %></td>
 		<% if(item.fititleimg == 0){ %>
 				<td><img src="http://www.afreecatv.com/mybs/img/default01_re.gif"></td>
 			<% }else{ %>

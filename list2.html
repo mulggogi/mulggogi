@@ -107,6 +107,7 @@ body {
 }
 
 .b05_3d_roll div {
+    //display:inline;
     position: absolute;
     text-align: center;
     width: 70px;
@@ -174,10 +175,11 @@ body {
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>부식 다시보기</title>
+	<title>즐겨찾기 다시보기</title>
 </head>
 <body>
-	<h1>부식 다시보기</h1>
+	<h1>즐겨찾기 다시보기</h1>
+	<img src="/img">
 <hr>
 
 <table width="100%" border="1">
@@ -186,26 +188,51 @@ body {
 		<th>image</th>
 		<th>파일제목</th>
 		<th>파일목록</th>
+		<th>채팅</th>
 	</tr>
-	<% data.forEach(function (item, index){ %>
+
+	<% if(data.length){
+
+		var i = 0;
+		var file = [];
+		var chat = [];
+
+			for(i=0;i< data.length;i++) {
+				file[i] = data[i].ffile;
+			}
+
+		for(i=0; file[i] != null;i++){
+			chat[i] = file[i].substring(file[i].length-4,file[i].length-24);
+		}
+
+		for(i=0;i < data.length;i++) { %>
 		<tr>
-		<td><%= item.fiday %></td>
-		<% if(item.fititleimg == 0){ %>
-				<td><img src="http://www.afreecatv.com/mybs/img/default01_re.gif"></td>
-			<% }else{ %>
-		<td><img src="<%= item.fititleimg %>"></td>
-			<% } %>
-		<td><%= item.fititle %></td>
-		<td><a href = "http://video.afreecatv.com<%= item.ffile %>" target="_blank">
+		<td><b><h2><%= data[i].fiday %></h2></b><br><center><%= data[i].fino %></center></td>
+		
+		<td><img class="thumb" onerror='this.src="http://www.afreecatv.com/images/afmain/img_thumb_defalut.gif"' src="<%= data[i].fititleimg %>"></td>
+	
+		<td><h2><%= data[i].fititle %></h2><h1><%= data[i].ino %>번째</h1></td>
+		<td><a href = "http://video.afreecatv.com<%= data[i].ffile %>" target="_blank">
+
 		<div class="back">
     		<div class="button_base b05_3d_roll">
-        		<div><%= item.ino %></div>
-        		<div><%= item.ino %></div>
+        		<div><%= data[i].ino %>번째<br>보기</div>
+        		<div><%= data[i].ino %>번째</div>
     		</div>
 		</div>
 		</td>
+
+		<td><a href = "http://videoimg.afreecatv.com/php/ChatLoad.php?rowKey=<%= data[i].fiday %>_<%= chat[i] %>_c" target="_blank">
+		<div class="back">
+		<div class="button_base b05_3d_roll">
+			<div>보기</div>
+			<div>채팅<br>[<%= data[i].ino %>]</div>
+		</div>
+		</div>
+		</td>
 		</tr>
-	<% }); %>
+	<% }
+		} %>	
 </table>
 
 </body>

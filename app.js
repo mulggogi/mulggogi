@@ -41,6 +41,13 @@ app.get('/', function(request,response){
 	});
 });
 
+app.get('/img', function (request, response) {
+    fs.readFile('1.jpg', function (error, data) {
+        response.writeHead(200, { 'content-type': 'text/html' });
+        response.end(data);
+    });
+});
+
 
 function foo() {
   console.log(Date());

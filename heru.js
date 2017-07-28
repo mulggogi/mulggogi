@@ -17,13 +17,16 @@ var mysql = require('mysql');
 var royaljoin = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15228730';
 var epsthddus = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15189885';
 var partypeople = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15992639';
+var jieun12125 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=16354849';
+var nytcom = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=16526421';
+var rrvv17 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=788815';
 
 
-var file_link = 'http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?nTitleNo=';
+var file_link = 'http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?&nRowNum=30&nTitleNo=';
 
 
 client.fetch(epsthddus,function (err, $, res, body){
-	console.log(res.headers);
+	//console.log(res.headers);
 
 	var word = [];
 	var word1 = [];
@@ -54,7 +57,7 @@ client.fetch(epsthddus,function (err, $, res, body){
 	
 
 	client.fetch(file_link + word1[0],function (err, $, res, body){
-  		console.log(res.headers);
+  		//console.log(res.headers);
  		
 		console.log(str1);
 			array_bj_id.push($('bj_id').text());
@@ -97,8 +100,21 @@ for(i=0; array_key[i] != null;){
 
 for(i=0; array_addr[i] != null;){
 
-			array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+		if(array_addr[i].indexOf('/m') == -1){
+			if(i<9){
+				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-42);
+			}else{
+				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+			}
 			i++;
+		}else{
+			if(i<9){
+				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+			}else{
+				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-44);
+			}
+			i++;
+		}
 }
 		
   		//console.log(array_addr);
@@ -118,9 +134,9 @@ for(i=0; array_addr[i] != null;){
 
 	connection.connect();
 
-	for(i=0; array_key[i] != null;){
+	for(i=0; i<max_i;){
 
-	var sqlQuery1 = "INSERT INTO files SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
+	var sqlQuery1 = "INSERT INTO files2 SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
 
 	var post1 = {fino : word1[0], ino : i+1, fiday : array_day[i], fititle : array_title[0], fititleimg : array_titleImage[0], ffile : array_file[i]};
 	

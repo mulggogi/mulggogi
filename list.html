@@ -25,10 +25,9 @@ tr:nth-child(even) { background: #eee; border-radius: 10px; }
 table { table-layout:fixed word-break:break-all; }
 
 img {
-	width : 320px;
-	height : 180px;
 	border-radius: 30px;
 }
+
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
@@ -175,11 +174,10 @@ body {
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>혜루찡 다시보기</title>
+	<title>물꼬기 서버</title>
 </head>
 <body>
-	<h1>혜루찡 다시보기</h1>
-	<img src="/img">
+	<center><img src="/img" width="50%" height="50%"></center>
 <hr>
 
 <table width="100%" border="1">
@@ -209,7 +207,7 @@ body {
 		<tr>
 		<td><b><h2><%= data[i].fiday %></h2></b><br><center><%= data[i].fino %></center></td>
 		
-		<td><img class="thumb" onerror='this.src="http://www.afreecatv.com/images/afmain/img_thumb_defalut.gif"' src="<%= data[i].fititleimg %>"></td>
+		<td><img class="thumb" onerror='this.src="http://www.afreecatv.com/images/afmain/img_thumb_defalut.gif"' src="<%= data[i].fititleimg %>" width="320px" height="180px" border-radius="30px"></td>
 	
 		<td><h2><%= data[i].fititle %></h2><h1><%= data[i].ino %>번째</h1></td>
 		<td><a href = "http://video.afreecatv.com<%= data[i].ffile %>" target="_blank">

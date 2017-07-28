@@ -46,8 +46,6 @@ CREATE TABLE Files2(
 
 
 
-
-
 -----------------------------
 
 DROP TABLE Files;

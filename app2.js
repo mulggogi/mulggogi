@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({
 
 
 //서버를 실행합니다.
-app.listen(52273,function(){
-	console.log('server running at http://127.0.0.1:52273');
+app.listen(52274,function(){
+	console.log('server running at http://127.0.0.1:52274');
 });
 
 //라우트를 수행합니다.
@@ -32,7 +32,7 @@ app.get('/', function(request,response){
 	//파일을 읽습니다.
 	fs.readFile('list2.html','utf8',function(error,data){
 	//데이터베이스 쿼리를 수행합니다.
-	connection.query('SELECT * FROM Files2 order by fino desc', function(error,results){
+	connection.query('SELECT * FROM Files2 order by fino asc', function(error,results){
 	//응답합니다.
 		response.send(ejs.render(data, {
 			data: results
@@ -42,18 +42,15 @@ app.get('/', function(request,response){
 });
 
 app.get('/img', function (request, response) {
-    fs.readFile('1.jpg', function (error, data) {
+    fs.readFile('2.jpg', function (error, data) {
         response.writeHead(200, { 'content-type': 'text/html' });
         response.end(data);
     });
 });
 
-
-var j = 0;
-
 function foo() {
   console.log(Date());
-  setTimeout(foo, 150);
+  setTimeout(foo, 200);
 
 
 var str1 = "\n";
@@ -62,38 +59,24 @@ var str2 = "\t";
 var i = 0;
 
 console.log(str1);
-console.log("즐겨찾기 크롤링!");
+console.log("혜루찡 다시보기 크롤링!");
 
 var client = require('cheerio-httpcli');
 var mysql = require('mysql');
 
-var royaljoin = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15228730&szBjId=royaljoin';
-var epsthddus = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15189885&szBjId=epsthddus';
-var partypeople = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15992639&szBjId=partypeople';
-var jieun12125 = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=16354849&szBjId=jieun12125';
-var nytcom = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=16526421&szBjId=nytcom';
-var rrvv17 = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=788815&szBjId=rrvv17';
-
-var royal_time_link = 'http://live.afreecatv.com:8079/app/index.cgi?szBjId=royaljoin';
-var eps_time_link = 'http://live.afreecatv.com:8079/app/index.cgi?szBjId=epsthddus';
-var party_time_link = 'http://live.afreecatv.com:8079/app/index.cgi?szBjId=partypeople';
-
-var bj = [royaljoin,epsthddus,partypeople]
-
-//var bj_link = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=';
-//var bj = ['15228730','15189885','15992639'];
+var royaljoin = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15228730';
+var epsthddus = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15189885';
+var partypeople = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15992639';
+var jieun12125 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=16354849';
+var nytcom = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=16526421';
+var rrvv17 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=788815';
 
 
 var file_link = 'http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?&nRowNum=30&nTitleNo=';
 
 
-client.fetch(bj[j],function (err, $, res, body){
+client.fetch(epsthddus,function (err, $, res, body){
 	//console.log(res.headers);
-	if(j==2){
-		j=0;
-	}else{
-		j++;
-	}
 
 	var word = [];
 	var word1 = [];
@@ -111,15 +94,9 @@ client.fetch(bj[j],function (err, $, res, body){
 	var max_i = 0;
 
 
-		$('a').each(function(idx){
-		if($(this).attr('href').indexOf('http://vod.afreecatv.com/') > -1){
-		word.push($(this).attr('href'));
-		}	
+		$('li').each(function(idx){
+		word.push($(this).attr('id'));
 		});
-
-		//$('li').each(function(idx){
-		//word.push($(this).attr('id'));
-		//});
 
 		for(i=0; word[i] != null;){
 		word1[i] = word[i].substring(word[i].length,word[i].length-8);
@@ -153,9 +130,9 @@ client.fetch(bj[j],function (err, $, res, body){
 			array_key.push($(this).attr('key'));
 			});
 
-		if(typeof array_key[0] == "undefined"){
-			array_key[0] = array_key[1];
-			array_day[0] = array_day[1];
+		if(array_key[i] == undefined){
+			array_key[i] = "xxxxxxxx_xxxxxxxx_xxxxxxxxx_x";
+			array_day[i] = "xxxxxxxx";
 		}
 
 		console.log(str1);
@@ -206,7 +183,6 @@ for(i=0; array_addr[i] != null;){
 
 
 	connection.connect();
-	
 
 	for(i=0; i<max_i;){
 

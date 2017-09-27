@@ -205,21 +205,12 @@ img {
 	<center><img src="/img" width="100%" height="100%"></center>
 <hr>
 
-<table width="100%" border="1">
-	<tr>
-		<th>파일날짜</th>
-		<th>image</th>
-		<th>파일제목</th>
-		<th>파일목록</th>
-		<th>채팅기록</th>
-	</tr>
-
 	<% if(data.length){
 
 		var i = 0;
 		var file = [];
 		var chat = [];
-		var filebox = [];
+
 
 			for(i=0;i< data.length;i++) {
 				file[i] = data[i].ffile;
@@ -227,33 +218,20 @@ img {
 
 		for(i=0; file[i] != null;i++){
 			chat[i] = file[i].substring(file[i].length-4,file[i].length-24);
-			filebox[i] = chat[i].substring(chat[i].length-2,chat[i].length-10);
+
 		}
 
 		for(i=0;i < data.length;i++) { %>
-		<tr>
-		<td><b><h2><%= data[i].fiday %></h2></b><br><center><%= data[i].fino %></center></td>
-		
-		<td><img class="thumb" onerror='this.src="http://www.afreecatv.com/images/afmain/img_thumb_defalut.gif"' src="<%= data[i].fititleimg %>" width="320px" height="180px" border-radius="30px"></td>
 	
-		<td><h2><%= data[i].fititle %></h2><h1><%= data[i].ino %>번째</h1></td>
-		<td>
-        		<div><a href="http://video.afreecatv.com<%= data[i].ffile %>" target="_blank" class="myButton2"><%= data[i].ino %></a></div>
-			<%=filebox[i]%>
-		</td>
-
-		<td><a href = "http://videoimg.afreecatv.com/php/ChatLoad.php?rowKey=<%= data[i].fiday %>_<%= chat[i] %>_c" target="_blank" class="myButton">
+        		<div><a href="http://video.afreecatv.com<%= data[i].ffile %>" target="_blank" class="myButton2"></a></div>
 	
-			<div>채팅<br><center>[<%= data[i].ino %>]</center></div>
-		</td>
-		</tr>
+		<a href = "http://videoimg.afreecatv.com/php/ChatLoad.php?rowKey=<%= data[i].fiday %>_<%= chat[i] %>_c" target="_blank" class="myButton">
+	
+			<div>채팅<br></div>
+	
 	<% }
-		for(i=0;data[i].fino < data[i].fino;i++){  %>
-			<a href="http://video.afreecatv.com<%= data[i].ffile %>" target="_blank" class="myButton2"><%= data[i].ino %></a></div>&nbsp;
-
-		<% }
+		
 			} %>	
-</table>
 
 </body>
 </html>

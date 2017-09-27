@@ -22,7 +22,7 @@ r.on('line', function(line){
 
 
 console.log(str1);
-console.log("부식^.^ 다시보기 크롤링!");
+console.log("최고다윽박 다시보기 크롤링!");
 
 var client = require('cheerio-httpcli');
 var mysql = require('mysql');
@@ -49,7 +49,7 @@ var connection = mysql.createConnection({
 var i = 0;
 
 
-client.fetch(royaljoin,function (err, $, res, body){
+client.fetch(partypeople,function (err, $, res, body){
 	//console.log(res.headers);
 	
 	var word = [];
@@ -77,7 +77,7 @@ for(i=0; word[i] != null;){
 		i++;
 		}
 		
-		//console.log(word1);
+		console.log(word1);
 	
 
 	client.fetch(file_link + word1[j],function (err, $, res, body){

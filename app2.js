@@ -48,10 +48,27 @@ app.get('/img', function (request, response) {
     });
 });
 
+for(var i=0;i<20;i++){
+app.get('/select', function(request,response){
+	var fiword = request.params.word1[0];
+	//파일을 읽습니다.
+	fs.readFile('list_file2.html','utf8',function(error,data){
+	//데이터베이스 쿼리를 수행합니다.
+	connection.query('SELECT ffile FROM Files2 where fino=? order by fino asc',[fiword], function(error,results){
+	//응답합니다.
+		response.send(ejs.render(data, {
+			data: results
+			}));
+		});
+	});
+});
+}
+
+var word = 24911916;
+
 function foo() {
   console.log(Date());
-  setTimeout(foo, 200);
-
+  setTimeout(foo, 300);
 
 var str1 = "\n";
 var str2 = "\t";
@@ -59,27 +76,16 @@ var str2 = "\t";
 var i = 0;
 
 console.log(str1);
-console.log("혜루찡 다시보기 크롤링!");
+console.log("Crolling ver 2.0");
+console.log("현재 파일번호");
+console.log(word);
 
 var client = require('cheerio-httpcli');
 var mysql = require('mysql');
 
-var royaljoin = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15228730';
-var epsthddus = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15189885';
-var partypeople = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15992639';
-var jieun12125 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=16354849';
-var nytcom = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=16526421';
-var rrvv17 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=788815';
-
-
 var file_link = 'http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?&nRowNum=30&nTitleNo=';
 
-
-client.fetch(epsthddus,function (err, $, res, body){
-	//console.log(res.headers);
-
-	var word = [];
-	var word1 = [];
+	var array_flag = [];
 
 	var array_bj_id = [];
 	var array_bj_logo = [];
@@ -93,22 +99,16 @@ client.fetch(epsthddus,function (err, $, res, body){
 	var array_addr = [];
 	var max_i = 0;
 
+	
+client.fetch(file_link + word,function (err, $, res, body){
+  		//console.log(res.headers);
 
-		$('li').each(function(idx){
-		word.push($(this).attr('id'));
-		});
-
-		for(i=0; word[i] != null;){
-		word1[i] = word[i].substring(word[i].length,word[i].length-8);
-		i++;
+		array_flag.push($('flag').text());
+		if(array_flag[0] != null){
+			word++;
 		}
 
-		//console.log(word1);
-	
 
-	client.fetch(file_link + word1[0],function (err, $, res, body){
-  		//console.log(res.headers);
- 		
 		console.log(str1);
 			array_bj_id.push($('bj_id').text());
 		console.log($('bj_id').text());
@@ -130,9 +130,14 @@ client.fetch(epsthddus,function (err, $, res, body){
 			array_key.push($(this).attr('key'));
 			});
 
-		if(array_key[i] == undefined){
-			array_key[i] = "xxxxxxxx_xxxxxxxx_xxxxxxxxx_x";
-			array_day[i] = "xxxxxxxx";
+		if(typeof array_key[0] == "undefined"){
+			array_key[0] = array_key[1];
+			array_day[0] = array_day[1];
+		}
+
+		if(typeof array_key[1] == "undefined"){
+			array_key[1] = array_key[0];
+			array_day[1] = array_day[0];
 		}
 
 		console.log(str1);
@@ -140,6 +145,10 @@ client.fetch(epsthddus,function (err, $, res, body){
 			$('file').each(function(idx){
 			array_addr.push($(this).text());
 			});
+			
+			if(array_addr[0] != null){
+				word++;
+			}
 
 for(i=0; array_key[i] != null;){
 			array_day[i] = array_key[i].substring(0,8);
@@ -184,18 +193,19 @@ for(i=0; array_addr[i] != null;){
 
 	connection.connect();
 
+
 	for(i=0; i<max_i;){
 
 	var sqlQuery1 = "INSERT INTO files2 SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
 
-	var post1 = {fino : word1[0], ino : i+1, fiday : array_day[i], fititle : array_title[0], fititleimg : array_titleImage[0], ffile : array_file[i]};
+	var post1 = {fino : word, ino : i+1, fiday : array_day[i], fititle : array_title[0], fititleimg : array_titleImage[0], ffile : array_file[i]};
 	
 	var query1 = connection.query(sqlQuery1, post1, callback1);
 
 	i++;
 
 	}
-	
+
 	function callback1(err1,result1){
     	if(err1){
         	throw err1
@@ -203,14 +213,14 @@ for(i=0; array_addr[i] != null;){
     		console.log("Insert Complete!");
    		console.log(query1.sql);
 	}
-	
+
 	console.log(str1);
 	connection.end();
 	}
 
 		});
 	
-});
+
 
 };
 

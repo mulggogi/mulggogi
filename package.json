@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start":"forever app.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "C:/Users/KKB/AppData/Roaming/npm/node_modules/bower install"
   },
   "author": "",
   "license": "ISC",

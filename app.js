@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 
 //데이터베이스와 연동합니다.
-var connection = mysql.createConnection({                           
+var connection = mysql.createConnection({
   		host: 'localhost',
  		port:3306,
   		user:'mulggogi',
@@ -23,8 +23,12 @@ app.use(bodyParser.urlencoded({
 
 
 //서버를 실행합니다.
-app.listen(52273,function(){
-	console.log('server running at http://127.0.0.1:52273');
+//app.listen(52273,function(){
+//	console.log('server running at http://127.0.0.1:52273');
+//});
+
+app.listen(process.env.PORT || 52273, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 //라우트를 수행합니다.
@@ -112,7 +116,7 @@ client.fetch(bj[j],function (err, $, res, body){
 		$('a').each(function(idx){
 		if($(this).attr('href').indexOf('http://vod.afreecatv.com/') > -1){
 		word.push($(this).attr('href'));
-		}	
+		}
 		});
 
 		//$('li').each(function(idx){
@@ -125,11 +129,11 @@ client.fetch(bj[j],function (err, $, res, body){
 		}
 
 		//console.log(word1);
-	
+
 
 	client.fetch(file_link + word1[0],function (err, $, res, body){
   		//console.log(res.headers);
- 		
+
 		console.log(str1);
 			array_bj_id.push($('bj_id').text());
 		console.log($('bj_id').text());
@@ -146,7 +150,7 @@ client.fetch(bj[j],function (err, $, res, body){
 			array_titleImage.push($('titleImage').text());
 		console.log($('titleImage').text());
 		console.log(str1);
-			
+
 			$('file').each(function(idx){
 			array_key.push($(this).attr('key'));
 			});
@@ -157,7 +161,7 @@ client.fetch(bj[j],function (err, $, res, body){
 		}
 
 		console.log(str1);
-			
+
 			$('file').each(function(idx){
 			array_addr.push($(this).text());
 			});
@@ -187,14 +191,14 @@ for(i=0; array_addr[i] != null;){
 			i++;
 		}
 }
-		
+
   		//console.log(array_addr);
 		console.log(str2);
 	max_i = i;
 	//console.log(max_i);
 
 	if(max_i != 0){
-	var connection = mysql.createConnection({                           
+	var connection = mysql.createConnection({
   		host: 'localhost',
  		port:3306,
   		user:'mulggogi',
@@ -204,20 +208,20 @@ for(i=0; array_addr[i] != null;){
 
 
 	connection.connect();
-	
+
 
 	for(i=0; i<max_i;){
 
 	var sqlQuery1 = "INSERT INTO files SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
 
 	var post1 = {fino : word1[0], ino : i+1, fiday : array_day[i], fititle : array_title[0], fititleimg : array_titleImage[0], ffile : array_file[i]};
-	
+
 	var query1 = connection.query(sqlQuery1, post1, callback1);
 
 	i++;
 
 	}
-	
+
 	function callback1(err1,result1){
     	if(err1){
         	throw err1
@@ -225,13 +229,13 @@ for(i=0; array_addr[i] != null;){
     		console.log("Insert Complete!");
    		console.log(query1.sql);
 	}
-	
+
 	console.log(str1);
 	connection.end();
 	}
 
 		});
-	
+
 });
 
 };

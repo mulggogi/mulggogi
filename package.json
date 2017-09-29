@@ -5,22 +5,22 @@
   "main": "main_httprequest.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"forever app.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "start": "forever app.js",
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "bower": "^1.8.2",
     "cheerio-httpcli": "^0.7.0",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "forever": "^0.15.3",
-    "mysql": "^2.13.0",
-    "bower": "1.8.2"
+    "mysql": "^2.13.0"
   },
-  "engines":{
-    "node":"8.0.x",
-    "npm":"5.0.x"
+  "engines": {
+    "node": "8.0.x",
+    "npm": "5.0.x"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "name": "nodejs_notepad_croller",
+  "description": "",
+  "main": "main_httprequest.js",
+  "authors": [
+    "mulhanbangul <nrdhacker@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/mulggogi/mulggogi",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

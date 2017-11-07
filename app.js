@@ -36,7 +36,20 @@ app.get('/', function(request,response){
 	//파일을 읽습니다.
 	fs.readFile('list.html','utf8',function(error,data){
 	//데이터베이스 쿼리를 수행합니다.
-	connection.query('SELECT * FROM Files order by fino desc', function(error,results){
+	connection.query('SELECT * FROM Files order by fino desc limit 60', function(error,results){
+	//응답합니다.
+		response.send(ejs.render(data, {
+			data: results
+			}));
+		});
+	});
+});
+
+app.get('/test', function(request,response){
+	//파일을 읽습니다.
+	fs.readFile('list.html','utf8',function(error,data){
+	//데이터베이스 쿼리를 수행합니다.
+	connection.query('SELECT * FROM Files2 order by fino desc limit 60', function(error,results){
 	//응답합니다.
 		response.send(ejs.render(data, {
 			data: results
@@ -173,24 +186,48 @@ for(i=0; array_key[i] != null;){
 			//console.log(array_day);
 
 
-for(i=0; array_addr[i] != null;){
+      for(i=0; array_addr[i] != null;){
 
-		if(array_addr[i].indexOf('/m') == -1){
-			if(i<9){
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-42);
-			}else{
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
-			}
-			i++;
-		}else{
-			if(i<9){
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
-			}else{
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-44);
-			}
-			i++;
-		}
-}
+      if(array_addr[i].indexOf('/m') == -1){
+        if(i<9 && array_addr[i].indexOf('_10.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_11.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_12.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_13.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_14.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_15.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_16.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_17.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_18.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_19.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i<9 && array_addr[i].indexOf('_20.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else if(i>=9){
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else{
+            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-42);
+        }
+
+        //i++;
+      }else{
+        if(i<9){
+          array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
+        }else{
+          array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-44);
+        }
+        //i++;
+      }
+      i++;
+      }
 
   		//console.log(array_addr);
 		console.log(str2);
@@ -212,7 +249,7 @@ for(i=0; array_addr[i] != null;){
 
 	for(i=0; i<max_i;){
 
-	var sqlQuery1 = "INSERT INTO files SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
+	var sqlQuery1 = "INSERT INTO Files SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
 
 	var post1 = {fino : word1[0], ino : i+1, fiday : array_day[i], fititle : array_title[0], fititleimg : array_titleImage[0], ffile : array_file[i]};
 

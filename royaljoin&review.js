@@ -130,22 +130,47 @@ for(i=0; word[i] != null;){
 
 
 for(i=0; array_addr[i] != null;){
-		if(array_addr[i].indexOf('/m') == -1){
-			if(i<9){
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-42);
-			}else{
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
-			}
-			i++;
-		}else{
-			if(i<9){
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-43);
-			}else{
-				array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-44);
-			}
-			i++;
-		}
-}
+
+      if(array_addr[i].indexOf('mvod') == -1){
+        if(i<9 && array_addr[i].indexOf('_10.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_11.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_12.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_13.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_14.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_15.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_16.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_17.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_18.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_19.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i<9 && array_addr[i].indexOf('_20.mp4') != -1){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else if(i>=9){
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else{
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-55);
+        }
+
+        //i++;
+      }else{
+        if(i<9){
+          array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
+        }else{
+          array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-57);
+        }
+        //i++;
+      }
+      i++;
+      }
 		
   		//console.log(array_addr);
 		console.log(str2);

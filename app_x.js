@@ -84,10 +84,12 @@ console.log("즐겨찾기 크롤링!");
 var client = require('cheerio-httpcli');
 var mysql = require('mysql');
 
-var royaljoin = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15228730&szBjId=royaljoin';
+var royaljoin2 = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15228730&szBjId=royaljoin';
+var royaljoin = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15228730&nRowNum=60';
 var epsthddus = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15189885&szBjId=epsthddus';
-var partypeople = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15992639&szBjId=partypeople';
-var epsthddus2 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15189885';
+var partypeople = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15992639&nRowNum=60';
+var partypeople2 = 'http://live.afreecatv.com:8079/app/main_content.cgi?nStationNo=15992639&szBjId=partypeople';
+var epsthddus2 = 'http://stbbs.afreecatv.com/app/list_ucc.cgi?nStationNo=15189885&nRowNum=60';
 
 var royal_time_link = 'http://live.afreecatv.com:8079/app/index.cgi?szBjId=royaljoin';
 var eps_time_link = 'http://live.afreecatv.com:8079/app/index.cgi?szBjId=epsthddus';

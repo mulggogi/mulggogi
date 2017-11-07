@@ -158,7 +158,7 @@ for(i=0; array_addr[i] != null;){
 	connection.connect();
 for(i=0; i<max_i;){
 
-	var sqlQuery1 = "INSERT INTO files SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
+	var sqlQuery1 = "INSERT INTO Files SET ? ON DUPLICATE KEY UPDATE fino = fino, ino = ino, fiday = fiday, fititle = fititle, fititleimg = fititleimg, ffile = ffile";
 
 	var post1 = {fino : word1[j], ino : i+1, fiday : array_day[i], fititle : array_title[0], fititleimg : array_titleImage[0], ffile : array_file[i]};
 	

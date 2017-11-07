@@ -1,4 +1,4 @@
-﻿var fs = require('fs');
+var fs = require('fs');
 var ejs = require('ejs');
 var mysql = require('mysql');
 var express = require('express');
@@ -190,39 +190,39 @@ for(i=0; array_key[i] != null;){
 
       if(array_addr[i].indexOf('mvod') == -1){
         if(i<9 && array_addr[i].indexOf('_10.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_11.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_12.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_13.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_14.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_15.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_16.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_17.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_18.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_19.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i<9 && array_addr[i].indexOf('_20.mp4') != -1){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else if(i>=9){
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else{
-            array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-56);
+            array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-55);
         }
 
         //i++;
       }else{
         if(i<9){
-          array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-57);
+          array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-56);
         }else{
-          array_file[i] = array_addr[i].substring(array_addr[i].length,array_addr[i].length-58);
+          array_file[i] = array_addr[i].substring(array_addr[i].length-14,array_addr[i].length-57);
         }
         //i++;
       }

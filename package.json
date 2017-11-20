@@ -24,5 +24,14 @@
   "engines": {
     "node": "8.0.x",
     "npm": "5.0.x"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mulggogi/mulggogi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mulggogi/mulggogi/issues"
+  },
+  "homepage": "https://github.com/mulggogi/mulggogi#readme"
 }
